@@ -105,9 +105,11 @@ function start( e ){
 	else{
 		//	ensure the map images are loaded first!!
 		mapIndexedImage = new Image();
+        //ORIGINAL mapIndexedImage.src = 'images/map_indexed.png';
 		mapIndexedImage.src = 'images/map_indexed.png';
 		mapIndexedImage.onload = function() {
 			mapOutlineImage = new Image();
+            //'images/earthmap1k.jpg'
 			mapOutlineImage.src = 'images/map_outline.png';
 			mapOutlineImage.onload = function(){
 				loadCountryCodes(
@@ -232,20 +234,38 @@ function initScene() {
 
     //	-----------------------------------------------------------------------------
     //	Create the backing (sphere)
-    // var mapGraphic = new THREE.Texture(worldCanvas);//THREE.ImageUtils.loadTexture("images/map.png");
-    // backTexture =  mapGraphic;
-    // mapGraphic.needsUpdate = true;
-	backMat = new THREE.MeshBasicMaterial(
+     var mapGraphic = new THREE.Texture(worldCanvas);
+    //THREE.ImageUtils.loadTexture("images/map.png");
+     backTexture =  mapGraphic;
+     mapGraphic.needsUpdate = true;
+backMat = new THREE.MeshBasicMaterial(
 		{
-			// color: 		0xffffff, 
-			// shininess: 	10, 
-// 			specular: 	0x333333,
-			// map: 		mapGraphic,
+			 //color: 		0xffffff, 
+			 //shininess: 	10, 
+			//specular: 	0x333333,
+			 //map: 		mapGraphic,
 			// lightMap: 	mapGraphic
 		}
-	);				
+	);	
+    backMat.map = THREE.ImageUtils.loadTexture("images/map.png");
 	// backMat.ambient = new THREE.Color(255,255,255);							
-	sphere = new THREE.Mesh( new THREE.SphereGeometry( 100, 40, 40 ), shaderMaterial );				
+	sphere = new THREE.Mesh( new THREE.SphereGeometry( 100, 40, 40 ), shaderMaterial );	//shaderMaterial ORIGINAL
+    
+    
+    //TEST TO OVERLAY COUNTRY OUTLINES
+    var material  = new THREE.MeshPhongMaterial({
+      map:     THREE.ImageUtils.loadTexture("images/map_outline_transparent.png"),//: new THREE.Texture(canvasCloud),
+      side        : THREE.DoubleSide,
+      opacity     : 0.8,
+      transparent : true,
+      depthWrite  : false,
+    })
+    var outlineMesh = new THREE.Mesh(new THREE.SphereGeometry( 100, 40, 40 ), material)
+    sphere.add(outlineMesh)
+
+
+    
+    
 	// sphere.receiveShadow = true;
 	// sphere.castShadow = true;
 	sphere.doubleSided = false;
@@ -477,6 +497,7 @@ function highlightCountry( countries ){
 	var pickMask = countries.length == 0 ? 0 : 1;
 	var oceanFill = 10 * pickMask;
 	ctx.fillStyle = 'rgb(' + oceanFill + ',' + oceanFill + ',' + oceanFill +')';
+
 	ctx.fillRect( 0, 0, 1, 1 );
 
 	// for( var i = 0; i<255; i++ ){
@@ -493,7 +514,8 @@ function highlightCountry( countries ){
 
 		var mapColor = countryData[countries[i]].mapColor;
 		// var fillCSS = '#ff0000';
-		var fillCSS = '#333333';
+        //333333
+		var fillCSS = '#82b1ff';
 		if( countryCode === selectedCountryCode )
 			fillCSS = '#eeeeee'
 		// if( mapColor !== undefined ){
