@@ -3,7 +3,6 @@ var util = require("util"),
     url = require("url"),
     path = require("path"),
     fs = require("fs"),
-    db = require("./database.js");
      
 server = http.createServer(function(request, response) {
   var uri = url.parse(request.url).pathname;
