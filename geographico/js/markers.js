@@ -10,13 +10,22 @@ function onMarkerHover( event ){
 	// 	console.log('clicked on something!!');				
 }
 
+function callQuery( code) {
+    //do a bunch of stuff;
+    var arrayofStuff = {functionName:"GDP", date:2014, value: 24000000};
+    
+    return arrayofStuff;
+}
+
 function attachMarkerToCountry( countryName, importance ){
 	//	look up the name to mesh
 	countryName = countryName.toUpperCase();
 	var country = countryData[countryName];
 	if( country === undefined )
 		return;
-
+    
+    callQuery( country.countryCode );
+    
 	var container = document.getElementById( 'visualization' );	
 	var template = document.getElementById( 'marker_template' );
 	var marker = template.cloneNode(true);

@@ -105,7 +105,7 @@ function start( e ){
 	else{
 		//	ensure the map images are loaded first!!
 		mapIndexedImage = new Image();
-		mapIndexedImage.src = 'images/map_indexed.png';
+		mapIndexedImage.src = 'images/map_lights.png';
 		mapIndexedImage.onload = function() {
 			mapOutlineImage = new Image();
 			mapOutlineImage.src = 'images/map_outline.png';
@@ -242,12 +242,26 @@ function initScene() {
 // 			specular: 	0x333333,
 			// map: 		mapGraphic,
 			// lightMap: 	mapGraphic
+            sizeAttenuation: true,
 		}
 	);				
-	// backMat.ambient = new THREE.Color(255,255,255);							
-	sphere = new THREE.Mesh( new THREE.SphereGeometry( 100, 40, 40 ), shaderMaterial );				
+	// backMat.ambient = new THREE.Color(255,255,255);
+    backMat.map = THREE.ImageUtils.loadTexture("images/map_lights.png");
+	sphere = new THREE.Mesh( new THREE.SphereGeometry( 100, 40, 40 ), shaderMaterial );//ORIGINAL shaderMaterial	
 	// sphere.receiveShadow = true;
 	// sphere.castShadow = true;
+    
+    /*
+    var material  = new THREE.MeshBasicMaterial({
+      map:     THREE.ImageUtils.loadTexture("images/earthlights1k.jpg"),//: new THREE.Texture(canvasCloud),
+      opacity     : 0.8,
+      transparent : true,
+      depthWrite  : false,
+    })
+    var outlineMesh = new THREE.Mesh(new THREE.SphereGeometry( 100, 40, 40 ), shaderMaterial)
+    sphere.add(outlineMesh)
+        */
+    
 	sphere.doubleSided = false;
 	sphere.rotation.x = Math.PI;				
 	sphere.rotation.y = -Math.PI/2;

@@ -23,14 +23,12 @@
 
 		<div id="visualization" >
 			<!-- 2D overlay elements go in here -->
-            
 
 			<div id="glContainer">
 				<!-- 3D webgl canvas here -->
 			</div>
 		</div>
 
-        
 		<script src="js/Detector.js"></script>
 		<script src="js/Tween.js"></script>
 		<script src="js/dat.gui.min.js"></script>
@@ -38,9 +36,8 @@
 		<script src="js/THREEx.KeyboardState.js"></script>
 		<script src="js/THREEx.WindowResize.js"></script>
 		<script src="js/Stats.js"></script>
-		<script language="JavaScript" type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-    	<script language="JavaScript" type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js"></script>
-
+		<script src="js/jquery-1.7.1.min.js"></script>
+    	<script src="js/jquery-ui-1.8.21.custom.min.js"></script>
     	<script src="js/RequestAnimationFrame.js"></script>
 		<script src="js/ShaderExtras.js"></script>
 		<script src="js/canvg.js"></script>
@@ -118,7 +115,8 @@
 				vec2 lookupUV = vec2( indexedColor, 0. );
 				vec4 lookupColor = texture2D( lookup, lookupUV );
 				float mask = lookupColor.x + (1.-outlineLevel) * indexedColor;
-				mask = clamp(mask,0.,1.);
+                mask = clamp(mask,0.,1.);
+				//mask = clamp(mask,0.,0.5);
 				float outlineColor = texture2D( outline, vUv ).x * outlineLevel;
 				float diffuse = mask + outlineColor;
 				gl_FragColor = vec4( vec3(diffuse), 1.  );
@@ -140,43 +138,15 @@
 			    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 			  })();
 		</script>
-            <!-- MY SCRIPT -->
-                    <script src="js/access_bar.js"></script>
-            <!-- end -->
+
 
 		<!-- All other hud can go here-->
         <div id="hudHeader" class="overlayCountries noPointer">
-            <h1 class="noPointer">Geographico — Bloomberg
+            <h1 class="noPointer">DataGlobe3D — Bloomberg
                 <div class="subtitle">An interactive visualization of bloomberg data. </div>
 			</h1>
         </div>
 
-            
-            <div id="access_bar">
-
-                <ul id="navList">
-                    <!--
-                  <li><a class="nav" href="#">Favorites</a>
-                    <!-- This is the sub nav
-                    <ul class="listTab">
-                      <li><a href="#">Will be populated</a></li>
-                      <li><a href="#">Will be populated</a></li>
-                      <li><a href="#">Will be populated</a></li>
-                    </ul>
-                  </li>
-                  <li><a class="nav" href="#">History</a>
-                    <!-- This is the sub nav 
-                    <ul class="listTab">
-                      <li><a href="#">Will be populated</a></li>
-                      <li><a href="#">Will be populated</a></li>
-                      <li><a href="#">Will be populated</a></li>
-                    </ul>
-                  </li>
-                -->
-                </ul>
-            </div>
-
-            
 		<div class="overlayCountries noPointer" id="hudButtons">
             <input type="button" value="SEARCH" class="searchBtn armsBtn pointer">
             <input type="text" name="country" class="countryTextInput pointer noMapDrag" value="UNITED STATES">
@@ -184,8 +154,6 @@
             <input type="button" value="+" class="zoomBtn zoomInBtn armsBtn pointer noMapDrag">
             <input type="button" value="ABOUT" class="aboutBtn armsBtn pointer"><br class="clear" />
         </div>
-            
-            <!--THIS IS THE TIMELINE AND GRAPH STUFF-->
         <div id="history" class="overlayCountries noPointer">
             <div class="graph">
                 <div class="close"></div>
@@ -219,9 +187,7 @@
                 <div id="handle" class="noMapDrag"></div>
             </ul>
         </div>
-
-        
-            <div id="graphIcon" class="overlayCountries"></div>
+        <div id="graphIcon" class="overlayCountries"></div>
         <div id="importExportBtns" class="overlayCountries">
             <div class="typeLabels">
                 <div class="mil">Military</div>
@@ -242,6 +208,10 @@
             </div>
             <br class="clear" />
         </div>
+            <div id="countryInfo">
+            HIIIIII
+            
+            </div>
 
         <div id="aboutContainer" class='overlayCountries'>
             <div class="arrowUp"></div>
