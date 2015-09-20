@@ -622,7 +622,7 @@ Bar graph on left
 #countryInfo {
     background: rgba(80,80,80,0.5);
     width: 250px;
-    height: 300px;
+    height: 200px;
     padding: 10px;
     position: absolute;
     right: 30px;
@@ -638,4 +638,7 @@ Bar graph on left
     padding: 5px 15px 5px 15px;
     text-align: center;
     color: #bcd0e5;
+}
+#countryInfo table .bold{
+    font-size: 20px;
 }

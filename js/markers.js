@@ -29,9 +29,10 @@ function showInfo(countryName) {
 		for (var i=0;i<data.length;i++) {
 			var GDP;
 			var pop;
+			var perc;
 			if (countryName == data[i].Country) {
 				pop = data[i].Population;
-				var perc = data[i].Percent;
+				perc = data[i].Percent;
 				GDP = data[i].GDP;
 				console.log(GDP);
 				console.log(pop);
@@ -40,12 +41,13 @@ function showInfo(countryName) {
 			}
 		}
 
-		    var mytable = "<table id='blockTable' cellpadding=\"0\" cellspacing=\"0\"><thead><tr><th>GDP</th><th>pop</th></tr><tbody><tr>";
+		    var mytable = "<table id='blockTable' cellpadding=\"0\" cellspacing=\"0\"><tbody>";
 
-        mytable += "</tr><tr>";
 
-        mytable += "<td>$" + GDP + "</td>";
-        mytable += "<td>" + pop + "</td>";
+
+        mytable += "<tr><td class='bold'>GDP</td><td>$" + GDP + "</td></tr>";
+        mytable += "<tr><td class='bold'>Population</td><td>" + pop + "</td>";
+        mytable += "<tr><td class='bold'>Total %</td><td>" + perc + "</td>";
 
     mytable += "</tr></tbody></table>";
     //INSERT TABLE
