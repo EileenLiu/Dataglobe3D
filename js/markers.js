@@ -22,7 +22,36 @@ function showInfo(countryName) {
     //SET HEADER
     $("#blockTitle").text(countryName + " 2014");  
 
-    
+
+
+	d3.csv("countries.csv", function(data) {
+
+		for (var i=0;i<data.length;i++) {
+			var GDP;
+			var pop;
+			if (countryName == data[i].Country) {
+				pop = data[i].Population;
+				var perc = data[i].Percent;
+				GDP = data[i].GDP;
+				console.log(GDP);
+				console.log(pop);
+				console.log(perc);
+				//ADD TO CHART N SHIT HERE
+			}
+		}
+
+		    var mytable = "<table id='blockTable' cellpadding=\"0\" cellspacing=\"0\"><thead><tr><th>GDP</th><th>pop</th></tr><tbody><tr>";
+
+        mytable += "</tr><tr>";
+
+        mytable += "<td>$" + GDP + "</td>";
+        mytable += "<td>" + pop + "</td>";
+
+    mytable += "</tr></tbody></table>";
+    //INSERT TABLE
+    $("#blockTable").replaceWith(mytable);
+	});
+/*
     //SET CONTENTS
     var items = blockass.Items;
     
@@ -40,7 +69,7 @@ function showInfo(countryName) {
     mytable += "</tr></tbody></table>";
     //INSERT TABLE
     $("#blockTable").replaceWith(mytable);
-    
+    */
 }
 
 function attachMarkerToCountry( countryName, importance ){
