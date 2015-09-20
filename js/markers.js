@@ -9,11 +9,38 @@ function onMarkerHover( event ){
 	// if( event.target.style.visibility == 'visible' )
 	// 	console.log('clicked on something!!');				
 }
-function callQuery( code) {
-    //do a bunch of stuff;
+function callQuery(code) {
+
     var arrayofStuff = {functionName:"GDP", date:2014, value: 24000000};
+
+}
+
+function showInfo(countryName) {
+    //MAKE VISIBLE
+    var block = $("#countryInfo");
+    block.css("display", "block");
+    //SET HEADER
+    $("#blockTitle").text(countryName + " 2014");  
+
     
-    return arrayofStuff;
+    //SET CONTENTS
+    var items = blockass.Items;
+    
+    //START TABLE
+    var mytable = "<table id='blockTable' cellpadding=\"0\" cellspacing=\"0\"><thead><tr><th>Index</th><th>Value</th></tr><tbody><tr>";
+
+    for (var i = 0; i < 8; i++) {
+        mytable += "</tr><tr>";
+        
+        var first = items[i].Ticker.split(" ");
+        mytable += "<td>" + first[0] + "</td>";
+        mytable += "<td>" + items[i].Value + "</td>";
+    }
+
+    mytable += "</tr></tbody></table>";
+    //INSERT TABLE
+    $("#blockTable").replaceWith(mytable);
+    
 }
 
 function attachMarkerToCountry( countryName, importance ){
@@ -28,23 +55,9 @@ function attachMarkerToCountry( countryName, importance ){
 	var marker = template.cloneNode(true);
 
 	callQuery(country.countryCode);
+    console.log(country.countryCode);
+    showInfo(countryName);
 
-	//SHIT GOING DOWN RIGHT HER
-	console.log(countryName);
-	d3.csv("countries.csv", function(data) {
-		for (i=0;i<data.length-1;i++) {
-			if (countryName == data[i].Country) {
-				var pop = data[i].Population;
-				var perc = data[i].Percent;
-				var GDP = data[i].GDP;
-				console.log(GDP);
-				console.log(pop);
-				console.log(perc);
-				//ADD TO CHART N SHIT HERE
-
-			}
-		}
-	});
 
 	country.marker = marker;
 	container.appendChild( marker );
