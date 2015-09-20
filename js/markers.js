@@ -10,17 +10,37 @@ function onMarkerHover( event ){
 	// 	console.log('clicked on something!!');				
 }
 function callQuery(code) {
-    //do a bunch of stuff;
+
     var arrayofStuff = {functionName:"GDP", date:2014, value: 24000000};
-    
-    return arrayofStuff;
+
 }
 
 function showInfo(countryName) {
+    //MAKE VISIBLE
     var block = $("#countryInfo");
     block.css("display", "block");
+    //SET HEADER
+    $("#blockTitle").text(countryName + " 2014");  
+
     
-    $("#blockTitle").text(countryName);
+    //SET CONTENTS
+    var items = blockass.Items;
+    
+    //START TABLE
+    var mytable = "<table id='blockTable' cellpadding=\"0\" cellspacing=\"0\"><thead><tr><th>Index</th><th>Value</th></tr><tbody><tr>";
+
+    for (var i = 0; i < 8; i++) {
+        mytable += "</tr><tr>";
+        
+        var first = items[i].Ticker.split(" ");
+        mytable += "<td>" + first[0] + "</td>";
+        mytable += "<td>" + items[i].Value + "</td>";
+    }
+
+    mytable += "</tr></tbody></table>";
+    //INSERT TABLE
+    $("#blockTable").replaceWith(mytable);
+    
 }
 
 function attachMarkerToCountry( countryName, importance ){
@@ -35,6 +55,7 @@ function attachMarkerToCountry( countryName, importance ){
 	var marker = template.cloneNode(true);
 
 	callQuery(country.countryCode);
+    console.log(country.countryCode);
     showInfo(countryName);
 
 

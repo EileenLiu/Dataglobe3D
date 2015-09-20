@@ -1,4 +1,4 @@
-{ Count: 24,
+var blockass = { Count: 24,
   Items:
    [ { Value: 9.9, Ticker: 'CNTSECNY Index', Date: '2014-12-31' },
      { Value: 607.323, Ticker: 'CNIVCORN Index', Date: '2014-12-31' },
