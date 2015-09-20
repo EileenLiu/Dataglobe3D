@@ -17,6 +17,7 @@ http.createServer(function(request, response) {
        response.writeHead(200);
        response.write(file, "binary");
        response.end();
+       console.log(response);
     });
 }).listen(8888);
  
