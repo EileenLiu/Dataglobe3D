@@ -9,13 +9,13 @@ function onMarkerHover( event ){
 	// if( event.target.style.visibility == 'visible' )
 	// 	console.log('clicked on something!!');				
 }
-function callQuery() {
+function callQuery(code) {
 
     //var arrayofStuff = {functionName:"GDP", date:2014, value: 24000000};
 $.ajax({
 type: 'GET', // added,
-url: 'http://localhost:3000/index.html/',
-//data: 'country='+code,
+url: 'http://127.0.0.1:3000/index.html/',
+data: 'country='+code,
 //dataType: 'jsonp' - removed
 //jsonpCallback: 'callback' - removed
 
