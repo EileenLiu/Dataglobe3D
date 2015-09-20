@@ -9,6 +9,12 @@ function onMarkerHover( event ){
 	// if( event.target.style.visibility == 'visible' )
 	// 	console.log('clicked on something!!');				
 }
+function callQuery( code) {
+    //do a bunch of stuff;
+    var arrayofStuff = {functionName:"GDP", date:2014, value: 24000000};
+    
+    return arrayofStuff;
+}
 
 function attachMarkerToCountry( countryName, importance ){
 	//	look up the name to mesh
@@ -21,7 +27,7 @@ function attachMarkerToCountry( countryName, importance ){
 	var template = document.getElementById( 'marker_template' );
 	var marker = template.cloneNode(true);
 
-	console.log(country.countryCode);
+	callQuery(country.countryCode);
 
 
 	country.marker = marker;
