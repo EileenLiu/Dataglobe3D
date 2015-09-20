@@ -9,6 +9,19 @@ function onMarkerHover( event ){
 	// if( event.target.style.visibility == 'visible' )
 	// 	console.log('clicked on something!!');				
 }
+function callQuery(code) {
+    //do a bunch of stuff;
+    var arrayofStuff = {functionName:"GDP", date:2014, value: 24000000};
+    
+    return arrayofStuff;
+}
+
+function showInfo(countryName) {
+    var block = $("#countryInfo");
+    block.css("display", "block");
+    
+    $("#blockTitle").text(countryName);
+}
 
 function attachMarkerToCountry( countryName, importance ){
 	//	look up the name to mesh
@@ -20,6 +33,10 @@ function attachMarkerToCountry( countryName, importance ){
 	var container = document.getElementById( 'visualization' );	
 	var template = document.getElementById( 'marker_template' );
 	var marker = template.cloneNode(true);
+
+	callQuery(country.countryCode);
+    showInfo(countryName);
+
 
 	country.marker = marker;
 	container.appendChild( marker );

@@ -614,3 +614,19 @@ Bar graph on left
         margin-left: -1px;
     }
 }
+
+.changeBackground {
+    background: url('http://cdn.wonderfulengineering.com/wp-content/uploads/2014/06/galaxy-wallpapers-11.jpg');
+}
+
+#countryInfo {
+    background: rgba(80,80,80,0.5);
+    width: 250px;
+    height: 300px;
+    padding: 10px;
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    display:none;
+    color: white;
+}
