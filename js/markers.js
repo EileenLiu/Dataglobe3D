@@ -9,11 +9,18 @@ function onMarkerHover( event ){
 	// if( event.target.style.visibility == 'visible' )
 	// 	console.log('clicked on something!!');				
 }
-function callQuery( code) {
+function callQuery(code) {
     //do a bunch of stuff;
     var arrayofStuff = {functionName:"GDP", date:2014, value: 24000000};
     
     return arrayofStuff;
+}
+
+function showInfo(countryName) {
+    var block = $("#countryInfo");
+    block.css("display", "block");
+    
+    $("#blockTitle").text(countryName);
 }
 
 function attachMarkerToCountry( countryName, importance ){
@@ -28,6 +35,7 @@ function attachMarkerToCountry( countryName, importance ){
 	var marker = template.cloneNode(true);
 
 	callQuery(country.countryCode);
+    showInfo(countryName);
 
 
 	country.marker = marker;
