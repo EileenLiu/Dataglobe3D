@@ -614,3 +614,7 @@ Bar graph on left
         margin-left: -1px;
     }
 }
+
+.changeBackground {
+    background: url('http://cdn.wonderfulengineering.com/wp-content/uploads/2014/06/galaxy-wallpapers-11.jpg');
+}

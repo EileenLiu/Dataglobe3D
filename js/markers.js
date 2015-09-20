@@ -21,6 +21,9 @@ function attachMarkerToCountry( countryName, importance ){
 	var template = document.getElementById( 'marker_template' );
 	var marker = template.cloneNode(true);
 
+	console.log(country.countryCode);
+
+
 	country.marker = marker;
 	container.appendChild( marker );
 

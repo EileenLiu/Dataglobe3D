@@ -57,7 +57,7 @@ function selectVisualization( linearData, year, countries, exportCategories, imp
 		attachMarkerToCountry( countryName, country.mapColor );
 	}
 
-	// console.log( mesh.affectedCountries );
+	//console.log( mesh.affectedCountries );
 	highlightCountry( affectedCountries );
 
 	if( previouslySelectedCountry !== selectedCountry ){
