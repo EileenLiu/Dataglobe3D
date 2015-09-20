@@ -91,4 +91,3 @@ function selectVisualization( linearData, year, countries, exportCategories, imp
 	}
     
     d3Graphs.initGraphs();
-}
